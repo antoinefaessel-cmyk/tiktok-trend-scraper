@@ -32,7 +32,7 @@ export default async function handler(req, res) {
     const m = html.match(/<script id="__NEXT_DATA__"[^>]*>([\s\S]*?)<\/script>/);
     if (m) {
       const nextData = JSON.parse(m[1]);
-      return res.status(200).json({ ok: true, data: nextData.props?.pageProps?.data || null });
+      return res.status(200).json({ ok: true, pageProps: nextData.props?.pageProps || null });
     }
 
     return res.status(200).json({ 
