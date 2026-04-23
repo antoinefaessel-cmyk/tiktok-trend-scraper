@@ -286,17 +286,33 @@ export default function EmmaRadar(){
   const[lastUpdated,setLastUpdated]=useState(null);
   const[saving,setSaving]=useState(false);
 
-  // Load from localStorage on mount
+  // GitHub raw URL for trending data
+  const DATA_URL = "https://raw.githubusercontent.com/antoinefaessel-cmyk/tiktok-trend-scraper/main/data/trending.json";
+
+  // Load data: try GitHub first, fallback to localStorage, then SEED
   useEffect(()=>{
     let mounted = true;
-    const load = () => {
-      const raw = localStorage.getItem(STORAGE_KEY);
+    const load = async () => {
+      // Try fetching fresh data from GitHub
+      try {
+        const r = await fetch(DATA_URL + "?t=" + Date.now());
+        if (r.ok) {
+          const fresh = await r.json();
+          if (fresh.FR?.length > 0 || fresh.US?.length > 0) {
+            if (!mounted) return;
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(fresh));
+            setData(fresh); setLastUpdated(fresh.lastUpdated); setLoading(false);
+            return;
+          }
+        }
+      } catch(e) { console.log("GitHub fetch failed, using local data"); }
+      // Fallback to localStorage
       if (!mounted) return;
+      const raw = localStorage.getItem(STORAGE_KEY);
       if (raw) {
         try { const parsed = JSON.parse(raw); setData(parsed); setLastUpdated(parsed.lastUpdated); }
         catch(e) { setData(SEED); setLastUpdated(SEED.lastUpdated); }
       } else {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(SEED));
         setData(SEED); setLastUpdated(SEED.lastUpdated);
       }
       setLoading(false);
@@ -311,14 +327,20 @@ export default function EmmaRadar(){
     setSaving(false);
   };
 
-  const[showPaste,setShowPaste]=useState(false);
-  const[pasteText,setPasteText]=useState("");
-  const handlePaste=()=>{
+  // Refresh from GitHub
+  const[refreshing,setRefreshing]=useState(false);
+  const handleRefresh=async()=>{
+    setRefreshing(true);
     try{
-      const parsed=JSON.parse(pasteText);
-      if(parsed.FR||parsed.US){ saveData({...data,...parsed,lastUpdated:new Date().toISOString()}); setShowPaste(false); setPasteText(""); }
-      else{alert("Format invalide");}
-    }catch(e){alert("JSON invalide: "+e.message);}
+      const r = await fetch(DATA_URL + "?t=" + Date.now());
+      if (r.ok) {
+        const fresh = await r.json();
+        if (fresh.FR?.length > 0 || fresh.US?.length > 0) {
+          saveData(fresh);
+        }
+      }
+    }catch(e){console.error(e);}
+    setRefreshing(false);
   };
 
   // Idées de contenu — generate via Claude API
@@ -417,7 +439,9 @@ Réponds UNIQUEMENT en JSON valide, sans markdown ni backticks :
 
         {tab==="sons"&&<>
           <div style={{width:1,height:24,background:"#e5e7eb",margin:"0 4px"}}/>
-          <button onClick={()=>setShowPaste(!showPaste)} style={{background:"#fff",color:"#374151",border:"1px solid #d1d5db",padding:"8px 14px",borderRadius:10,fontSize:12,fontWeight:600,cursor:"pointer"}}>🔄 Rafraîchir</button>
+          <button onClick={handleRefresh} disabled={refreshing} style={{background:refreshing?"#6b7280":"#fff",color:refreshing?"#fff":"#374151",border:"1px solid #d1d5db",padding:"8px 14px",borderRadius:10,fontSize:12,fontWeight:600,cursor:refreshing?"wait":"pointer"}}>
+            {refreshing?"⏳ Chargement...":"🔄 Rafraîchir"}
+          </button>
           <div style={{width:1,height:24,background:"#e5e7eb",margin:"0 4px"}}/>
           <select value={sortBy} onChange={e=>setSortBy(e.target.value)} style={sel}><option value="rank">Par rang</option><option value="emma">Par score Emma</option><option value="momentum">Par momentum</option></select>
           <select value={filterFit} onChange={e=>setFilterFit(e.target.value)} style={sel}><option value="all">Tous ({sounds.length})</option><option value="high">High fit ({hi})</option><option value="medium">Medium ({md})</option><option value="low">Low ({lo})</option></select>
@@ -427,17 +451,6 @@ Réponds UNIQUEMENT en JSON valide, sans markdown ni backticks :
 
       {/* ═══════════ TAB 1: SONS TRENDS ═══════════ */}
       {tab==="sons"&&<>
-        {showPaste&&(
-          <div style={{background:"#fff",border:"1px solid #e5e7eb",borderRadius:14,padding:16,marginBottom:14}}>
-            <div style={{fontSize:13,fontWeight:700,marginBottom:6}}>🔄 Mettre à jour les données</div>
-            <p style={{fontSize:12,color:"#6b7280",margin:"0 0 10px"}}>Demande à Claude : <strong>"Rafraîchis le radar"</strong></p>
-            <textarea value={pasteText} onChange={e=>setPasteText(e.target.value)} placeholder='Coller le JSON ici...' style={{width:"100%",minHeight:60,border:"1px solid #e5e7eb",borderRadius:8,padding:10,fontSize:12,fontFamily:"monospace",resize:"vertical",outline:"none",boxSizing:"border-box"}}/>
-            <div style={{display:"flex",gap:8,marginTop:8}}>
-              <button onClick={handlePaste} disabled={!pasteText.trim()||saving} style={{background:"#16a34a",color:"#fff",border:"none",padding:"8px 16px",borderRadius:8,fontSize:12,fontWeight:700,cursor:"pointer"}}>{saving?"...":"✅ Mettre à jour"}</button>
-              <button onClick={()=>{setShowPaste(false);setPasteText("");}} style={{background:"#fff",color:"#374151",border:"1px solid #d1d5db",padding:"8px 16px",borderRadius:8,fontSize:12,cursor:"pointer"}}>Fermer</button>
-            </div>
-          </div>
-        )}
 
         <div style={{display:"flex",gap:10,marginBottom:14}}>
           <div style={{background:"#f0fdf4",border:"1px solid #bbf7d0",borderRadius:10,padding:"8px 14px",flex:1,textAlign:"center"}}><div style={{fontSize:22,fontWeight:800,color:"#16a34a"}}>{hi}</div><div style={{fontSize:10,fontWeight:600,color:"#16a34a"}}>High fit</div></div>
