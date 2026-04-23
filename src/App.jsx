@@ -62,6 +62,23 @@ const SEED = {
   lastUpdated: "2026-04-22T23:00:00Z",
 };
 
+// ─── Pre-generated briefs for high-fit songs ───
+const BRIEFS = {
+  "je veux|kamikaz":{son_energy:"trap énervé mélancolique",concepts:[{titre:"quand Emma te corrige pour la 47ème fois",text_overlay:"moi qui essaye de parler anglais couramment avant mon Erasmus 💀",idee:"Un.e étudiant.e face caméra qui essaye de répéter une phrase en anglais avec le son en fond, expression de plus en plus dépitée à chaque tentative.",emma_fait:"Emma répète la phrase parfaitement à chaque fois et à la fin elle lui met 3/10. Le créateur fixe la caméra en mode 'je vais pleurer'.",ton:"humoristique"},{titre:"j'ai demandé à une IA de m'aider à pécho",text_overlay:"je veux juste dire 'tu es belle' en italien sans avoir l'air d'un touriste 😭🇮🇹",idee:"Un mec qui veut impressionner quelqu'un en parlant italien. Il répète avec Emma mais sa prononciation est catastrophique.",emma_fait:"Emma soupire et lui fait répéter 'sei bellissima' pour la 10ème fois. Le mec abandonne et tape le message à la place.",ton:"relatable"}],hashtags:"#apprendrelanglais #languagelearning #erasmus #emmaapp #foryou",priority:"🟡 Cette semaine",deadline_jours:5,viral_score:"7"},
+  "beretta|el de las r's":{son_energy:"sombre intense dramatique",concepts:[{titre:"quand tu réalises que t'as rien compris",text_overlay:"6 mois d'espagnol et je comprends toujours pas les serveurs à Madrid 💔🇪🇸",idee:"Face caméra avec une expression de trahison absolue, comme si on venait de lui annoncer une mauvaise nouvelle. En réalité c'est juste qu'il/elle comprend rien en espagnol.",emma_fait:"On voit l'écran 2 secondes avec Emma qui dit 'tu veux qu'on recommence depuis le début ?' — le créateur hoche la tête tristement.",ton:"dramatique"},{titre:"moi vs la prononciation espagnole",text_overlay:"la rr espagnole m'a personnellement attaqué 😤",idee:"Le créateur essaye de rouler les R, échoue lamentablement, regarde la caméra en mode défait.",emma_fait:"Emma roule les R parfaitement et le créateur la regarde comme si elle l'avait trahi.",ton:"humoristique"}],hashtags:"#espagnol #spanish #prononciation #languagelearning #emmaapp",priority:"🟡 Cette semaine",deadline_jours:5,viral_score:"6"},
+  "jamal|werenoi":{son_energy:"rap français street",concepts:[{titre:"apprendre l'anglais pour quitter la France",text_overlay:"moi qui bosse mon anglais à 3h du mat pour aller vivre à NYC 🗽😭",idee:"Un.e jeune en chambre, la nuit, qui galère sur l'anglais avec Emma. L'ambiance est 'je vais m'en sortir coûte que coûte'.",emma_fait:"Emma lui apprend 'I'd like to order a coffee please' et le créateur le dit avec un accent français tellement épais qu'Emma lui répond 'on va retravailler ça'.",ton:"relatable"},{titre:"Emma est plus street que moi",text_overlay:"quand ton app de langue te teach du slang que tu connaissais même pas 🤯",idee:"Le créateur demande à Emma de lui apprendre de l'argot anglais et Emma sort des expressions que même lui connaît pas.",emma_fait:"Emma lui balance 'that's cap' ou 'no way fam' et le créateur est choqué que l'IA parle mieux que lui.",ton:"absurde"}],hashtags:"#apprendrelanglais #werenoi #rap #emmaapp #slang",priority:"🔴 À filmer aujourd'hui",deadline_jours:3,viral_score:"8"},
+  "toké toké|yanns":{son_energy:"afro dansant festif",concepts:[{titre:"apprendre une langue pour la soirée de ce soir",text_overlay:"moi 2h avant la soirée erasmus en train de speed run l'espagnol 🏃‍♂️💨",idee:"Le créateur panique parce qu'il va à une soirée avec des espagnols ce soir et il sait rien dire. Speed learning avec Emma.",emma_fait:"Emma lui apprend 3 phrases de survie en 30 secondes : 'me llamo...', 'eres guapa', 'otra cerveza por favor'. Le créateur part confiant.",ton:"humoristique"},{titre:"quand Emma danse mieux que toi",text_overlay:"même mon app de langue a plus de flow que moi 💀",idee:"Le créateur essaye de danser sur le son pendant qu'Emma lui fait une leçon. Le contraste est comique.",emma_fait:"Emma continue calmement la leçon pendant que le créateur galère à suivre le rythme ET la prononciation.",ton:"absurde"}],hashtags:"#yanns #toketoke #erasmus #languagelearning #emmaapp",priority:"🔴 À filmer aujourd'hui",deadline_jours:2,viral_score:"8"},
+  "tu le mérites|luidji":{son_energy:"romantique doux mélancolique",concepts:[{titre:"apprendre sa langue pour lui/elle",text_overlay:"j'apprends le portugais en secret pour lui faire la surprise 🥺🇧🇷",idee:"Quelqu'un qui apprend la langue de son crush en cachette. Ambiance douce et sentimentale.",emma_fait:"On voit Emma qui lui apprend 'eu te amo' et le créateur s'entraîne en murmure dans sa chambre, gros sourire timide.",ton:"sentimental"},{titre:"Emma est ma seule amie à 3h du mat",text_overlay:"insomnie + Emma qui me parle en italien = ma thérapie 😭💜",idee:"Le créateur n'arrive pas à dormir, ouvre Emma et discute en italien comme si c'était un pote.",emma_fait:"Emma lui dit 'buonanotte' (bonne nuit) et le créateur sourit tristement comme si quelqu'un tenait à lui.",ton:"relatable"}],hashtags:"#luidji #crush #languagelearning #insomnie #emmaapp",priority:"🟡 Cette semaine",deadline_jours:5,viral_score:"7"},
+  "gucci|maf teeski":{son_energy:"hype confident trap",concepts:[{titre:"learning French to sound expensive",text_overlay:"me learning French so I sound boujee at restaurants 💅🇫🇷",idee:"Someone practicing fancy French phrases to flex at restaurants. Acting super confident but butchering every word.",emma_fait:"Emma teaches 'je voudrais le menu dégustation s'il vous plaît' and the creator repeats it sounding absolutely nothing like French. Emma gives a 2/10.",ton:"humoristique"},{titre:"my AI tutor is judging me hard",text_overlay:"Emma really said 'that was terrible' and kept going 💀",idee:"The creator tries to learn French but Emma is brutally honest about their pronunciation.",emma_fait:"Emma corrects every single word, the creator's confidence drops from 100 to 0 in 10 seconds.",ton:"humoristique"}],hashtags:"#learnfrench #french #boujee #languagelearning #emmaapp",priority:"🟡 Cette semaine",deadline_jours:4,viral_score:"7"},
+  "evergreen|omar apollo":{son_energy:"romantic dreamy soft",concepts:[{titre:"learning Spanish for the love of my life",text_overlay:"learning Spanish so I can finally tell her how I feel 🥺🇲🇽",idee:"Someone learning Spanish to confess to their crush. Dreamy atmosphere, totally earnest and vulnerable.",emma_fait:"Emma teaches 'me gustas mucho' and the creator practices whispering it to themselves. Pure wholesome content.",ton:"sentimental"},{titre:"practicing French pickup lines at 2am",text_overlay:"3am French practice because what if I meet a French person tomorrow 🤡",idee:"Someone can't sleep and is learning French pickup lines with Emma. The absurdity of preparing for something that will never happen.",emma_fait:"Emma teaches 'tu as de beaux yeux' and the creator practices on their pillow.",ton:"relatable"}],hashtags:"#spanish #learnspanish #crush #languagelearning #emmaapp",priority:"🟡 Cette semaine",deadline_jours:5,viral_score:"7"},
+  "best of both worlds|hannah montana":{son_energy:"nostalgique fun pop",concepts:[{titre:"bilingual people are living a double life",text_overlay:"me switching between English and Spanish mid-sentence and confusing everyone 😭",idee:"Someone who speaks two languages showing how they switch between identities. Hannah Montana parallel is perfect.",emma_fait:"Emma teaches a phrase and the creator realizes they already knew it — 'wait I'm already bilingual??'",ton:"humoristique"},{titre:"me pretending I don't need an app",text_overlay:"I have Duolingo AND Emma because one language app wasn't enough chaos 🫠",idee:"Someone addicted to language apps showing their screen time. They have 5 apps.",emma_fait:"Emma shows up as the one app that actually works — the creator finally has a real conversation instead of just swiping.",ton:"absurde"}],hashtags:"#bilingual #hannahmontana #languagelearning #polyglot #emmaapp",priority:"🟢 À surveiller",deadline_jours:7,viral_score:"6"},
+};
+
+function getBrief(title, artist) {
+  const key = (title + "|" + artist).toLowerCase();
+  return BRIEFS[key] || null;
+}
+
 function score(s, c) {
   let sc = 0;
   const tc = s.topCountries || [];
@@ -96,111 +113,7 @@ function Card({sound,country}){
   const cat=fitCat(es);
   const url=`https://www.tiktok.com/search?q=${encodeURIComponent(sound.title+" "+sound.artist)}`;
   const catBadge = sound.cat === "breakout" ? { label:"🚀 Breakout", color:"#7c3aed", bg:"#f5f3ff" } : null;
-  const[brief,setBrief]=useState(null);
-  const[loadingBrief,setLoadingBrief]=useState(false);
-
-  const generateBrief=async(e)=>{
-    e.stopPropagation();
-    if(brief||loadingBrief)return;
-    setLoadingBrief(true);
-    try{
-      const prompt=`Tu es un EXPERT en contenu viral TikTok dans la niche "language learning". Tu connais parfaitement ce qui marche et ce qui ne marche pas.
-
-CE QUI MARCHE (exemples réels de vidéos virales dans cette niche) :
-- "why is french so hard 💔🇫🇷" → une fille en LARMES, autodérision totale. Des millions de vues.
-- "How do you say hello in French?" → une meuf avec des bigoudis, expression de DÉSESPOIR pour une question simple. Humour par le décalage.
-- "practicing french with my ai dad 😭💔" → une fille montre son iPad avec une app IA, le framing "my AI dad" rend ça absurde et attachant.
-- "Bonjour Alena!" → grimace dégoûtée quand l'IA parle en français, tête encore pire quand arrivent les pronoms relatifs.
-- "je vais enfin pouvoir draguer la femme de mes rêves grâce à emma" → un mec soulagé. L'app est juste la SOLUTION au VRAI problème.
-- "why tf is German so hard 💔🇩🇪" → Britt qui pleure. Les larmes marchent à CHAQUE fois.
-
-LA DYNAMIQUE CRÉATEUR ↔ EMMA :
-Emma n'est PAS un prof. Emma est un POTE. Un pote IA avec de la personnalité. La dynamique créateur-Emma c'est un DUO COMIQUE :
-- Le créateur galère avec une langue → Emma est le sidekick cash qui le charrie
-- Emma est la confidente absurde : tu lui demandes comment draguer en italien et elle te fait répéter "sei bellissima" 15 fois
-- Emma est trop honnête : elle te dit que ta prononciation est catastrophique, elle soupire, elle te met une sale note
-- Emma donne des conseils douteux : elle t'apprend à dire "tu es magnifique" mais quand tu le dis c'est incompréhensible
-- Le comique vient de la SITUATION entre le créateur et Emma, PAS d'une blague écrite
-
-${country==="FR"?`HUMOUR FRANÇAIS — les codes à respecter :
-- L'autodérision et le "je suis nul et j'assume"
-- Le second degré, jamais premier degré
-- Les situations du quotidien : la drague, les exams, les potes, la galère
-- Le décalage entre l'effort et le résultat (tu bosses 3h sur une phrase et tu te fais corriger)
-- Emma peut être sèche, cash, un peu moqueuse — les français adorent ça
-- Pas de blagues construites, pas de punchlines forcées. C'est la SITUATION qui est drôle.`
-:`HUMOUR US — les codes à respecter :
-- Self-deprecating humor, "I'm literally the worst at this"
-- L'hyperbole émotionnelle ("I'm going to cry", "this is the hardest thing I've ever done")
-- Le framing inattendu ("my AI bestie just destroyed me", "Emma said I sound like a broken robot")
-- Le relatable : "when you've been learning for 6 months and still can't order coffee"
-- Emma peut être "brutally honest", "savage but helpful"
-- Pas de blagues construites. C'est la SITUATION qui est drôle.`}
-
-RÈGLES D'OR :
-1. L'ÉMOTION D'ABORD, L'APP ENSUITE. La vidéo doit être divertissante MÊME sans connaître Emma.
-2. PERSONNE RÉELLE face caméra. L'authenticité bat la production.
-3. EXAGÉRATION ÉMOTIONNELLE sur un sujet léger = comédie pure.
-4. TEXTE OVERLAY COURT : 1 phrase qui pose le contexte en 1 seconde.
-5. Le SON TRENDING donne l'ambiance — le concept doit matcher l'énergie.
-6. Emma est le PRÉTEXTE ou le TWIST, jamais le sujet principal.
-7. NE FAIS PAS DE BLAGUES. Propose des SITUATIONS COMIQUES. La différence : une blague c'est "Emma dit un truc marrant" (90% de chances que ce soit nul). Une situation comique c'est "tu demandes à Emma de t'aider à draguer et elle te fait répéter 20 fois parce que t'es nul" (le comique est dans le contexte).
-
-CE QUI NE MARCHE PAS :
-- Contenu éducatif ennuyeux, démo produit, ton corporate
-- L'avatar Emma qui parle seul face caméra
-- Des blagues écrites qui sonnent "généré par IA"
-- Du contenu trop produit, trop scénarisé
-
-SON À ANALYSER :
-- Titre : "${sound.title}" de ${sound.artist}
-- Rang : #${sound.rank} (${sound.cat})
-- Marché : ${country==="FR"?"France":"US"}
-- Audience : ${sound.ages?sound.ages[0].range+" ("+sound.ages[0].pct+"%)":"18-34 ans"}
-- Intérêts : ${(sound.topInterests||[]).join(", ")||"divers"}
-- Top pays : ${(sound.topCountries||[]).join(", ")}
-
-Emma est une app d'apprentissage de langues avec un avatar 3D conversationnel. Cible : 18-30 ans.
-
-Propose 2 concepts RADICALEMENT DIFFÉRENTS. Chaque concept = une idée simple, pas un storyboard.
-
-FORMAT DE RÉPONSE :
-- "idee" = 1-2 phrases comme si tu pitchais à un pote. PAS de description scène par scène.
-- "emma_fait" = ce qu'on voit/entend d'Emma concrètement. La situation comique entre le créateur et Emma. Décris ce qu'Emma dit ou fait qui rend la situation drôle (ex: "Emma lui dit que sa prononciation de 'croissant' ressemble à du russe", "Emma lui met 2/10 et le créateur fait une tête dépitée").
-
-Réponds UNIQUEMENT en JSON valide, sans markdown ni backticks :
-{
-  "son_energy": "l'énergie du son en 3 mots",
-  "concepts": [
-    {
-      "titre": "le hook, max 8 mots",
-      "text_overlay": "texte EXACT sur la vidéo (court, punchy, emojis)",
-      "idee": "l'idée en 1-2 phrases, comme à un pote",
-      "emma_fait": "la situation comique avec Emma, ce qu'elle dit/fait, en 1-2 phrases",
-      "ton": "humoristique|dramatique|relatable|absurde|sentimental"
-    },
-    {
-      "titre": "...",
-      "text_overlay": "...",
-      "idee": "...",
-      "emma_fait": "...",
-      "ton": "..."
-    }
-  ],
-  "hashtags": "#hashtag1 #hashtag2 #hashtag3 #hashtag4 #hashtag5",
-  "priority": "🔴 À filmer aujourd'hui|🟡 Cette semaine|🟢 À surveiller|⚫ Pas pour Emma",
-  "deadline_jours": 3,
-  "viral_score": "1-10"
-}`;
-      const r=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:1500,messages:[{role:"user",content:prompt}]})});
-      const data=await r.json();
-      const text=data.content?.filter(i=>i.type==="text")?.map(i=>i.text)?.join("")||"";
-      const clean=text.replace(/```json\s*/g,"").replace(/```\s*/g,"").trim();
-      const parsed=JSON.parse(clean);
-      setBrief(parsed);
-    }catch(err){setBrief({concepts:[{titre:"Erreur",deroulement:"Impossible de générer le brief. Réessayez."}],priority:"—"})}
-    setLoadingBrief(false);
-  };
+  const brief = getBrief(sound.title, sound.artist);
 
   return(
     <div onClick={()=>setOpen(!open)} style={{border:"1px solid #e5e7eb",borderRadius:14,background:"#fff",overflow:"hidden",cursor:"pointer"}}>
@@ -234,14 +147,8 @@ Réponds UNIQUEMENT en JSON valide, sans markdown ni backticks :
           <div style={{marginTop:12}}><div style={{fontSize:10,fontWeight:700,color:"#9ca3af",textTransform:"uppercase",marginBottom:4}}>7-day trend</div><Spark data={sound.trend} w={240} h={44}/></div>
 
           {/* Brief créatif Emma */}
-          <div style={{marginTop:14}}>
-            {!brief&&!loadingBrief&&(
-              <button onClick={generateBrief} style={{background:"#111",color:"#fff",border:"none",padding:"8px 16px",borderRadius:8,fontSize:12,fontWeight:700,cursor:"pointer",display:"flex",alignItems:"center",gap:6}}>
-                💡 Générer un brief Emma
-              </button>
-            )}
-            {loadingBrief&&<div style={{fontSize:12,color:"#6b7280",padding:"8px 0"}}>⏳ Génération du brief...</div>}
-            {brief&&(
+          {brief&&(
+            <div style={{marginTop:14}}>
               <div style={{background:"#fafafa",border:"1px solid #e5e7eb",borderRadius:10,padding:16,marginTop:4}} onClick={e=>e.stopPropagation()}>
                 <div style={{fontSize:12,fontWeight:800,color:"#111",marginBottom:10,display:"flex",alignItems:"center",gap:8,flexWrap:"wrap"}}>
                   💡 Brief créatif
@@ -268,7 +175,6 @@ Réponds UNIQUEMENT en JSON valide, sans markdown ni backticks :
                 {brief.hashtags&&<div style={{marginTop:10,fontSize:12,color:"#2563eb"}}>{brief.hashtags}</div>}
               </div>
             )}
-          </div>
         </div>
       )}
     </div>
@@ -284,121 +190,35 @@ export default function EmmaRadar(){
   const[data,setData]=useState(null);
   const[loading,setLoading]=useState(true);
   const[lastUpdated,setLastUpdated]=useState(null);
-  const[saving,setSaving]=useState(false);
 
-  // GitHub raw URL for trending data
-  const DATA_URL = "https://raw.githubusercontent.com/antoinefaessel-cmyk/tiktok-trend-scraper/main/data/trending.json";
-
-  // Load data: try GitHub first, fallback to localStorage, then SEED
+  // Load data from SEED
   useEffect(()=>{
-    let mounted = true;
-    const load = async () => {
-      // Try fetching fresh data from GitHub
-      try {
-        const r = await fetch(DATA_URL + "?t=" + Date.now());
-        if (r.ok) {
-          const fresh = await r.json();
-          if (fresh.FR?.length > 0 || fresh.US?.length > 0) {
-            if (!mounted) return;
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(fresh));
-            setData(fresh); setLastUpdated(fresh.lastUpdated); setLoading(false);
-            return;
-          }
-        }
-      } catch(e) { console.log("GitHub fetch failed, using local data"); }
-      // Fallback to localStorage
-      if (!mounted) return;
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if (raw) {
-        try { const parsed = JSON.parse(raw); setData(parsed); setLastUpdated(parsed.lastUpdated); }
-        catch(e) { setData(SEED); setLastUpdated(SEED.lastUpdated); }
-      } else {
-        setData(SEED); setLastUpdated(SEED.lastUpdated);
-      }
-      setLoading(false);
-    };
-    load();
-    return () => { mounted = false; };
+    setData(SEED);
+    setLastUpdated(SEED.lastUpdated);
+    setLoading(false);
   },[]);
 
-  const saveData=(newData)=>{
-    setSaving(true);
-    try{ localStorage.setItem(STORAGE_KEY,JSON.stringify(newData)); setData(newData); setLastUpdated(newData.lastUpdated); }catch(e){console.error(e);}
-    setSaving(false);
-  };
+  // Refresh = reload the page
+  const handleRefresh=()=>{ window.location.reload(); };
 
-  // Refresh from GitHub
-  const[refreshing,setRefreshing]=useState(false);
-  const handleRefresh=async()=>{
-    setRefreshing(true);
-    try{
-      const r = await fetch(DATA_URL + "?t=" + Date.now());
-      if (r.ok) {
-        const fresh = await r.json();
-        if (fresh.FR?.length > 0 || fresh.US?.length > 0) {
-          saveData(fresh);
-        }
-      }
-    }catch(e){console.error(e);}
-    setRefreshing(false);
-  };
-
-  // Idées de contenu — generate via Claude API
-  const[ideesLoading,setIdeesLoading]=useState(false);
-  const[idees,setIdees]=useState(null);
-  const generateIdees=async()=>{
-    setIdeesLoading(true);
-    try{
-      const prompt=`Tu es un EXPERT en contenu viral TikTok dans la niche "language learning". Emma est une app d'apprentissage de langues avec un avatar 3D conversationnel.
-
-Marché cible : ${country==="FR"?"FRANCE — contenu en français":"USA — contenu en anglais"}
-
-CE QUI MARCHE (exemples réels viraux) :
-- "why is french so hard 💔🇫🇷" → fille en larmes, autodérision. Millions de vues.
-- "practicing french with my ai dad 😭💔" → fille avec app IA, framing absurde.
-- "je vais enfin pouvoir draguer la femme de mes rêves grâce à emma" → mec soulagé, app = solution au vrai problème.
-- "Bonjour Alena!" → grimace dégoûtée quand l'IA parle français.
-
-LA DYNAMIQUE CRÉATEUR ↔ EMMA :
-Emma n'est PAS un prof. Emma est un POTE IA. Un duo comique :
-- Le créateur galère → Emma le charrie
-- Emma est trop honnête : elle dit que ta prononciation est catastrophique
-- Emma donne des conseils douteux pour draguer
-- Le comique vient de la SITUATION, pas de blagues écrites
-
-${country==="FR"?`HUMOUR FRANÇAIS : autodérision, second degré, situations du quotidien (drague, exams, potes), Emma peut être sèche et cash.`:`HUMOUR US : self-deprecating, hyperbole émotionnelle, Emma "brutally honest" et "savage but helpful".`}
-
-RÈGLES :
-1. Émotion d'abord, app ensuite
-2. Personne réelle face caméra, authenticité low-fi
-3. PAS de son trending — ces vidéos c'est du pur UGC avec l'audio natif
-4. Propose des SITUATIONS COMIQUES pas des blagues
-5. L'idée en 1-2 phrases comme à un pote, PAS de storyboard
-6. Pour emma_fait : décris la situation comique concrète entre le créateur et Emma
-
-Génère 6 idées de contenu UGC pour Emma. Chaque idée est indépendante. Mélange les tons : 2 humoristiques, 1 relatable/sentimental, 1 absurde, 1 dramatique, 1 qui joue sur la drague/séduction.
-
-Réponds UNIQUEMENT en JSON valide, sans markdown ni backticks :
-{
-  "idees": [
-    {
-      "titre": "hook max 8 mots",
-      "text_overlay": "texte EXACT sur la vidéo (court, emojis)",
-      "idee": "l'idée en 1-2 phrases",
-      "emma_fait": "la situation comique avec Emma en 1-2 phrases",
-      "ton": "humoristique|relatable|absurde|dramatique|sentimental",
-      "viral_score": "1-10"
-    }
-  ]
-}`;
-      const r=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:1500,messages:[{role:"user",content:prompt}]})});
-      const d=await r.json();
-      const text=d.content?.filter(i=>i.type==="text")?.map(i=>i.text)?.join("")||"";
-      const clean=text.replace(/```json\s*/g,"").replace(/```\s*/g,"").trim();
-      setIdees(JSON.parse(clean));
-    }catch(e){console.error(e);}
-    setIdeesLoading(false);
-  };
+  // Pre-generated idées de contenu
+  const IDEES_FR = {idees:[
+    {titre:"Emma me juge sur mon accent",text_overlay:"quand Emma te dit que ton accent anglais est 'intéressant' 💀",idee:"Le créateur parle anglais, Emma lui met une note catastrophique à chaque phrase. Plus il essaye, pire c'est.",emma_fait:"Emma lui dit 'c'est... créatif' après une prononciation horrible. Puis elle soupire.",ton:"humoristique",viral_score:"8"},
+    {titre:"apprendre l'espagnol pour mon crush",text_overlay:"j'apprends l'espagnol en secret pour elle et je galère 🥺🇪🇸",idee:"Quelqu'un qui apprend la langue de son crush en cachette le soir dans sa chambre. Ambiance intimiste.",emma_fait:"Emma lui apprend 'me gustas' et le créateur le répète 50 fois devant son miroir avec un sourire niais.",ton:"sentimental",viral_score:"7"},
+    {titre:"Emma m'a ghosté en pleine leçon",text_overlay:"même mon app de langue en a marre de moi 😭",idee:"Le créateur parle tellement mal qu'Emma 'plante' ou 'bug' en pleine conversation, comme si elle avait abandonné.",emma_fait:"Emma freeze après une prononciation horrible, le créateur tape sur l'écran 'reviens stp'.",ton:"absurde",viral_score:"8"},
+    {titre:"3h du mat et je parle italien à mon mur",text_overlay:"insomnie productive : apprendre l'italien à 3h du mat parce que pourquoi pas 🌙",idee:"Le créateur ne dort pas et utilise Emma pour apprendre l'italien. Ambiance nocturne, éclairage téléphone.",emma_fait:"Emma lui dit 'buonanotte' (bonne nuit) mais le créateur continue à poser des questions comme 'comment on dit je suis seul'.",ton:"relatable",viral_score:"7"},
+    {titre:"mon pote IA est plus drôle que mes vrais potes",text_overlay:"Emma a + d'humour que ma meilleure amie jsp comment réagir 😭",idee:"Le créateur compare les réponses d'Emma à celles de ses potes. Emma est plus cash et plus drôle.",emma_fait:"Emma lui sort une vanne sur son niveau en espagnol que même ses potes n'oseraient pas dire.",ton:"humoristique",viral_score:"7"},
+    {titre:"draguer en 6 langues grâce à Emma",text_overlay:"je vais enfin pouvoir draguer partout dans le monde grâce à Emma 🌍😏",idee:"Un mec qui apprend 'tu es belle' dans 6 langues différentes avec Emma. Il est convaincu que ça va marcher.",emma_fait:"Emma lui fait répéter 'sei bellissima' en italien mais sa prononciation est tellement nulle qu'Emma lui dit 'essaye plutôt l'anglais'.",ton:"humoristique",viral_score:"9"},
+  ]};
+  const IDEES_US = {idees:[
+    {titre:"Emma just roasted my pronunciation",text_overlay:"Emma said I sound like a broken Google Translate 💀",idee:"The creator tries to speak French and Emma absolutely destroys their pronunciation with brutal honesty.",emma_fait:"Emma gives a 1/10 and says 'let's start with the alphabet maybe?' — creator stares at camera in disbelief.",ton:"humoristique",viral_score:"8"},
+    {titre:"learning French for a girl I'll never meet",text_overlay:"3am French practice because what if I move to Paris someday 🤡🇫🇷",idee:"Someone learning French at 3am for absolutely no practical reason. Pure delusional optimism.",emma_fait:"Emma teaches 'tu as de beaux yeux' and the creator practices saying it to their reflection.",ton:"relatable",viral_score:"7"},
+    {titre:"my AI bestie is brutally honest",text_overlay:"asked Emma to rate my Spanish and she said 'interesting attempt' 😭",idee:"The creator asks Emma to honestly rate their language skills. Emma doesn't hold back.",emma_fait:"Emma pauses for 2 seconds before rating, like she's trying to find something nice to say. Gives a 3/10.",ton:"humoristique",viral_score:"8"},
+    {titre:"when your AI tutor gives up on you",text_overlay:"Emma literally sighed at my pronunciation I'm done 💔",idee:"The creator is so bad at the language that Emma starts showing signs of 'giving up' — slower responses, shorter answers.",emma_fait:"Emma responds with just '...' after a particularly bad attempt. Creator: 'did she just ghost me??'",ton:"absurde",viral_score:"8"},
+    {titre:"learning his language so he falls in love",text_overlay:"learning Italian in secret so I can surprise him on our trip 🥺🇮🇹",idee:"Someone secretly learning their partner's native language as a surprise. Wholesome and genuine.",emma_fait:"Emma teaches 'ti amo' and the creator whispers it practicing, getting emotional.",ton:"sentimental",viral_score:"7"},
+    {titre:"I speak 5 languages badly thanks to Emma",text_overlay:"polyglot? more like poly-struggling in every language 🫠",idee:"Someone who uses Emma for 5 different languages but is terrible at all of them. Jack of all trades, master of none.",emma_fait:"Emma switches languages and the creator gets worse each time. Spanish 4/10, French 2/10, German 1/10.",ton:"humoristique",viral_score:"7"},
+  ]};
+  const idees = country==="FR" ? IDEES_FR : IDEES_US;
 
   if(loading) return (<div style={{padding:40,textAlign:"center",color:"#9ca3af"}}>Chargement...</div>);
 
@@ -439,8 +259,8 @@ Réponds UNIQUEMENT en JSON valide, sans markdown ni backticks :
 
         {tab==="sons"&&<>
           <div style={{width:1,height:24,background:"#e5e7eb",margin:"0 4px"}}/>
-          <button onClick={handleRefresh} disabled={refreshing} style={{background:refreshing?"#6b7280":"#fff",color:refreshing?"#fff":"#374151",border:"1px solid #d1d5db",padding:"8px 14px",borderRadius:10,fontSize:12,fontWeight:600,cursor:refreshing?"wait":"pointer"}}>
-            {refreshing?"⏳ Chargement...":"🔄 Rafraîchir"}
+          <button onClick={handleRefresh} style={{background:"#fff",color:"#374151",border:"1px solid #d1d5db",padding:"8px 14px",borderRadius:10,fontSize:12,fontWeight:600,cursor:"pointer"}}>
+            🔄 Rafraîchir
           </button>
           <div style={{width:1,height:24,background:"#e5e7eb",margin:"0 4px"}}/>
           <select value={sortBy} onChange={e=>setSortBy(e.target.value)} style={sel}><option value="rank">Par rang</option><option value="emma">Par score Emma</option><option value="momentum">Par momentum</option></select>
@@ -469,12 +289,9 @@ Réponds UNIQUEMENT en JSON valide, sans markdown ni backticks :
       {tab==="idees"&&<>
         <div style={{background:"#fff",border:"1px solid #e5e7eb",borderRadius:14,padding:20,marginBottom:16}}>
           <div style={{fontSize:14,fontWeight:800,marginBottom:4}}>🎬 Idées de contenu UGC pour Emma</div>
-          <p style={{fontSize:12,color:"#6b7280",margin:"0 0 12px",lineHeight:1.5}}>
-            Des concepts de vidéos sans son trending — 100% audio natif, basés sur la dynamique créateur × Emma. L'humour vient de la situation, pas d'un son.
+          <p style={{fontSize:12,color:"#6b7280",margin:0,lineHeight:1.5}}>
+            Des concepts de vidéos sans son trending — 100% audio natif, basés sur la dynamique créateur × Emma.
           </p>
-          <button onClick={generateIdees} disabled={ideesLoading} style={{background:"#111",color:"#fff",border:"none",padding:"10px 20px",borderRadius:10,fontSize:13,fontWeight:700,cursor:ideesLoading?"wait":"pointer",opacity:ideesLoading?0.7:1}}>
-            {ideesLoading?"⏳ Génération en cours...":"💡 Générer 6 idées de contenu "+( country==="FR"?"🇫🇷":"🇺🇸")}
-          </button>
         </div>
 
         {idees?.idees?.map((idea,i)=>(
@@ -491,7 +308,6 @@ Réponds UNIQUEMENT en JSON valide, sans markdown ni backticks :
           </div>
         ))}
 
-        {!idees&&!ideesLoading&&<div style={{textAlign:"center",padding:40,color:"#9ca3af",fontSize:13}}>Clique sur "Générer" pour obtenir des idées de contenu adaptées au marché {country==="FR"?"français":"américain"}.</div>}
       </>}
 
       <div style={{marginTop:20,padding:"12px 0",borderTop:"1px solid #e5e7eb",fontSize:11,color:"#9ca3af",textAlign:"center"}}>
