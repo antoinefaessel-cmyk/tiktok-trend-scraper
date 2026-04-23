@@ -174,7 +174,8 @@ function Card({sound,country}){
 
                 {brief.hashtags&&<div style={{marginTop:10,fontSize:12,color:"#2563eb"}}>{brief.hashtags}</div>}
               </div>
-            )}
+            </div>
+          )}
         </div>
       )}
     </div>
