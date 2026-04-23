@@ -1,0 +1,35 @@
+name: Scrape TikTok Trends
+
+on:
+  schedule:
+    # Runs every day at 8am UTC (10am Paris)
+    - cron: '0 8 * * *'
+  workflow_dispatch: # Manual trigger button
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: |
+          cd scripts
+          npm install playwright
+          npx playwright install chromium
+
+      - name: Run scraper
+        run: node scripts/scrape.js
+
+      - name: Commit and push data
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+          git add data/trending.json
+          git diff --staged --quiet || git commit -m "Update trending data $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          git push
