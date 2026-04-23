@@ -1,0 +1,7 @@
+{
+  "name": "tiktok-scraper-scripts",
+  "private": true,
+  "dependencies": {
+    "playwright": "^1.45.0"
+  }
+}
