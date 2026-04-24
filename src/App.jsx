@@ -19,6 +19,27 @@ const SEED = {
     { rank:12, title:"Sans toi", artist:"Naps", change:"+2", approved:false, trend:[0.10,0.15,0.30,0.55,0.80,1,0.86], topCountries:["France","Belgium"], topInterests:["Nail Art","Beauty"], ages:null, cat:"popular" },
     { rank:13, title:"OULOULOU", artist:"2ZG", change:null, approved:false, trend:[0,0.05,0.10,0.20,0.35,0.43,1], topCountries:["France","Belgium"], topInterests:["Recreation","Beauty"], ages:null, cat:"popular" },
     { rank:14, title:"Good Morning", artist:"Vozes da Natureza", change:null, approved:true, trend:[0,0,0,0,0.01,0.21,1], topCountries:["Croatia","Switzerland"], topInterests:["Advertisement","Theatre"], ages:null, cat:"popular" },
+import { useState, useEffect } from "react";
+
+const STORAGE_KEY = "emma-radar-data";
+
+// ─── Initial seed data from TikTok Creative Center (scraped April 22, 2026) ───
+const SEED = {
+  FR: [
+    { rank:1, title:"Threat Level", artist:"Sam Roth & Rex Logan", change:"+31", approved:true, trend:[0,0,0,0,0,0.01,1], topCountries:["Greece","Hungary","Italy"], topInterests:["Transportation","Beauty","Social News"], ages:null, cat:"popular" },
+    { rank:2, title:"体温層", artist:"yasuhiro soda", change:"+6", approved:false, trend:[0.01,0.01,0.01,0.01,0.01,0.06,1], topCountries:["Italy","Germany","France"], topInterests:["Business & Finance","DIY"], ages:null, cat:"popular" },
+    { rank:3, title:"Je veux", artist:"Kamikaz", change:"NEW", approved:false, trend:[0.43,0.40,0.64,0.92,0.57,0.58,1], topCountries:["France","Belgium","Switzerland"], topInterests:["Pranks","Comedy","Recreation","Beauty","Nail Art"], ages:[{pct:88,range:"18-24"},{pct:6,range:"25-34"},{pct:6,range:"35-44"}], cat:"popular" },
+    { rank:4, title:"A New Avar", artist:"Grushkov", change:"+11", approved:false, trend:[0,0,0,0,0.02,0.13,1], topCountries:["Greece","Italy","Netherlands"], topInterests:["Cars & Motorcycles","Music","Lip-sync"], ages:null, cat:"popular" },
+    { rank:5, title:"Beretta", artist:"El De Las R's", change:null, approved:false, trend:[0.06,0.06,0.13,0.23,0.50,1,0.94], topCountries:["Italy","Spain","France"], topInterests:["Hilarious Fails","Music","Lip-sync"], ages:[{pct:86,range:"18-24"}], cat:"popular" },
+    { rank:6, title:"Pull up Proper", artist:"Drift Kingston", change:"+1", approved:false, trend:[0,0,0,0.01,0.04,0.23,1], topCountries:["Latvia","Germany","France"], topInterests:["DIY","Advertisement"], ages:null, cat:"popular" },
+    { rank:7, title:"Mystery Girl", artist:"Housecall", change:"+5", approved:false, trend:[0,0,0,0.01,0.05,0.30,1], topCountries:["Greece","Italy","France"], topInterests:["Music","Beauty"], ages:null, cat:"popular" },
+    { rank:8, title:"睡眠用BGM", artist:"Sleeping Forest", change:"+5", approved:false, trend:[0,0,0,0,0.01,0.08,1], topCountries:["Japan","France"], topInterests:["Relaxation","Sleep"], ages:null, cat:"popular" },
+    { rank:9, title:"No Save Point", artist:"edivieira", change:"+5", approved:true, trend:[0,0,0,0,0.02,0.31,1], topCountries:["Slovakia","Bulgaria"], topInterests:["Traditional Sports","Comics & Anime"], ages:null, cat:"popular" },
+    { rank:10, title:"Crystal Bowl Healing", artist:"Pure Noise Lab", change:"+13", approved:false, trend:[0,0,0,0,0.01,0.21,1], topCountries:["Bulgaria","Spain"], topInterests:["Wellness","Meditation"], ages:null, cat:"popular" },
+    { rank:11, title:"CIRO", artist:"Lagui", change:null, approved:false, trend:[0,0,0.02,0.08,0.25,0.18,1], topCountries:["France","Belgium"], topInterests:["Recreation","Drama"], ages:null, cat:"popular" },
+    { rank:12, title:"Sans toi", artist:"Naps", change:"+2", approved:false, trend:[0.10,0.15,0.30,0.55,0.80,1,0.86], topCountries:["France","Belgium"], topInterests:["Nail Art","Beauty"], ages:null, cat:"popular" },
+    { rank:13, title:"OULOULOU", artist:"2ZG", change:null, approved:false, trend:[0,0.05,0.10,0.20,0.35,0.43,1], topCountries:["France","Belgium"], topInterests:["Recreation","Beauty"], ages:null, cat:"popular" },
+    { rank:14, title:"Good Morning", artist:"Vozes da Natureza", change:null, approved:true, trend:[0,0,0,0,0.01,0.21,1], topCountries:["Croatia","Switzerland"], topInterests:["Advertisement","Theatre"], ages:null, cat:"popular" },
     { rank:15, title:"I love you", artist:"Sai Sai Kham Leng", change:"+11", approved:true, trend:[0,0,0,0,0.02,0.30,1], topCountries:["Croatia","Norway"], topInterests:["Theatre","DIY"], ages:null, cat:"popular" },
     { rank:16, title:"Meditations Burn", artist:"Saymon Cleiton", change:"+13", approved:false, trend:[0,0,0,0,0.01,0.29,1], topCountries:["Sweden","France"], topInterests:["DIY","Sports News"], ages:null, cat:"popular" },
     { rank:17, title:"Sons da Natureza", artist:"Dy Kamylle", change:null, approved:true, trend:[0,0,0,0,0.01,0.15,1], topCountries:["Latvia","Romania"], topInterests:["Magic","Business"], ages:null, cat:"popular" },
@@ -192,15 +213,22 @@ export default function EmmaRadar(){
   const[loading,setLoading]=useState(true);
   const[lastUpdated,setLastUpdated]=useState(null);
 
-  // Load data from SEED
+  // Load data: try GitHub first, fallback to SEED
+  const GITHUB_DATA_URL = "https://raw.githubusercontent.com/antoinefaessel-cmyk/tiktok-trend-scraper/main/data/trending.json";
   useEffect(()=>{
-    setData(SEED);
-    setLastUpdated(SEED.lastUpdated);
-    setLoading(false);
+    (async()=>{
+      try {
+        const r = await fetch(GITHUB_DATA_URL + "?t=" + Date.now());
+        if (r.ok) {
+          const fresh = await r.json();
+          if (fresh.FR?.length > 0 || fresh.US?.length > 0) {
+            setData(fresh); setLastUpdated(fresh.lastUpdated); setLoading(false); return;
+          }
+        }
+      } catch(e) {}
+      setData(SEED); setLastUpdated(SEED.lastUpdated); setLoading(false);
+    })();
   },[]);
-
-  // Refresh = reload the page
-  const handleRefresh=()=>{ window.location.reload(); };
 
   // API helper — calls /api/generate serverless function
   const callAPI = async (prompt, max_tokens=1500) => {
@@ -283,10 +311,6 @@ Réponds UNIQUEMENT en JSON valide, sans markdown ni backticks :
         {cbC("🇫🇷 France","FR")}{cbC("🇺🇸 US","US")}
 
         {tab==="sons"&&<>
-          <div style={{width:1,height:24,background:"#e5e7eb",margin:"0 4px"}}/>
-          <button onClick={handleRefresh} style={{background:"#fff",color:"#374151",border:"1px solid #d1d5db",padding:"8px 14px",borderRadius:10,fontSize:12,fontWeight:600,cursor:"pointer"}}>
-            🔄 Rafraîchir
-          </button>
           <div style={{width:1,height:24,background:"#e5e7eb",margin:"0 4px"}}/>
           <select value={sortBy} onChange={e=>setSortBy(e.target.value)} style={sel}><option value="rank">Par rang</option><option value="emma">Par score Emma</option><option value="momentum">Par momentum</option></select>
           <select value={filterFit} onChange={e=>setFilterFit(e.target.value)} style={sel}><option value="all">Tous ({sounds.length})</option><option value="high">High fit ({hi})</option><option value="medium">Medium ({md})</option><option value="low">Low ({lo})</option></select>
