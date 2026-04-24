@@ -202,24 +202,48 @@ export default function EmmaRadar(){
   // Refresh = reload the page
   const handleRefresh=()=>{ window.location.reload(); };
 
-  // Pre-generated idées de contenu
-  const IDEES_FR = {idees:[
-    {titre:"Emma me juge sur mon accent",text_overlay:"quand Emma te dit que ton accent anglais est 'intéressant' 💀",idee:"Le créateur parle anglais, Emma lui met une note catastrophique à chaque phrase. Plus il essaye, pire c'est.",emma_fait:"Emma lui dit 'c'est... créatif' après une prononciation horrible. Puis elle soupire.",ton:"humoristique",viral_score:"8"},
-    {titre:"apprendre l'espagnol pour mon crush",text_overlay:"j'apprends l'espagnol en secret pour elle et je galère 🥺🇪🇸",idee:"Quelqu'un qui apprend la langue de son crush en cachette le soir dans sa chambre. Ambiance intimiste.",emma_fait:"Emma lui apprend 'me gustas' et le créateur le répète 50 fois devant son miroir avec un sourire niais.",ton:"sentimental",viral_score:"7"},
-    {titre:"Emma m'a ghosté en pleine leçon",text_overlay:"même mon app de langue en a marre de moi 😭",idee:"Le créateur parle tellement mal qu'Emma 'plante' ou 'bug' en pleine conversation, comme si elle avait abandonné.",emma_fait:"Emma freeze après une prononciation horrible, le créateur tape sur l'écran 'reviens stp'.",ton:"absurde",viral_score:"8"},
-    {titre:"3h du mat et je parle italien à mon mur",text_overlay:"insomnie productive : apprendre l'italien à 3h du mat parce que pourquoi pas 🌙",idee:"Le créateur ne dort pas et utilise Emma pour apprendre l'italien. Ambiance nocturne, éclairage téléphone.",emma_fait:"Emma lui dit 'buonanotte' (bonne nuit) mais le créateur continue à poser des questions comme 'comment on dit je suis seul'.",ton:"relatable",viral_score:"7"},
-    {titre:"mon pote IA est plus drôle que mes vrais potes",text_overlay:"Emma a + d'humour que ma meilleure amie jsp comment réagir 😭",idee:"Le créateur compare les réponses d'Emma à celles de ses potes. Emma est plus cash et plus drôle.",emma_fait:"Emma lui sort une vanne sur son niveau en espagnol que même ses potes n'oseraient pas dire.",ton:"humoristique",viral_score:"7"},
-    {titre:"draguer en 6 langues grâce à Emma",text_overlay:"je vais enfin pouvoir draguer partout dans le monde grâce à Emma 🌍😏",idee:"Un mec qui apprend 'tu es belle' dans 6 langues différentes avec Emma. Il est convaincu que ça va marcher.",emma_fait:"Emma lui fait répéter 'sei bellissima' en italien mais sa prononciation est tellement nulle qu'Emma lui dit 'essaye plutôt l'anglais'.",ton:"humoristique",viral_score:"9"},
-  ]};
-  const IDEES_US = {idees:[
-    {titre:"Emma just roasted my pronunciation",text_overlay:"Emma said I sound like a broken Google Translate 💀",idee:"The creator tries to speak French and Emma absolutely destroys their pronunciation with brutal honesty.",emma_fait:"Emma gives a 1/10 and says 'let's start with the alphabet maybe?' — creator stares at camera in disbelief.",ton:"humoristique",viral_score:"8"},
-    {titre:"learning French for a girl I'll never meet",text_overlay:"3am French practice because what if I move to Paris someday 🤡🇫🇷",idee:"Someone learning French at 3am for absolutely no practical reason. Pure delusional optimism.",emma_fait:"Emma teaches 'tu as de beaux yeux' and the creator practices saying it to their reflection.",ton:"relatable",viral_score:"7"},
-    {titre:"my AI bestie is brutally honest",text_overlay:"asked Emma to rate my Spanish and she said 'interesting attempt' 😭",idee:"The creator asks Emma to honestly rate their language skills. Emma doesn't hold back.",emma_fait:"Emma pauses for 2 seconds before rating, like she's trying to find something nice to say. Gives a 3/10.",ton:"humoristique",viral_score:"8"},
-    {titre:"when your AI tutor gives up on you",text_overlay:"Emma literally sighed at my pronunciation I'm done 💔",idee:"The creator is so bad at the language that Emma starts showing signs of 'giving up' — slower responses, shorter answers.",emma_fait:"Emma responds with just '...' after a particularly bad attempt. Creator: 'did she just ghost me??'",ton:"absurde",viral_score:"8"},
-    {titre:"learning his language so he falls in love",text_overlay:"learning Italian in secret so I can surprise him on our trip 🥺🇮🇹",idee:"Someone secretly learning their partner's native language as a surprise. Wholesome and genuine.",emma_fait:"Emma teaches 'ti amo' and the creator whispers it practicing, getting emotional.",ton:"sentimental",viral_score:"7"},
-    {titre:"I speak 5 languages badly thanks to Emma",text_overlay:"polyglot? more like poly-struggling in every language 🫠",idee:"Someone who uses Emma for 5 different languages but is terrible at all of them. Jack of all trades, master of none.",emma_fait:"Emma switches languages and the creator gets worse each time. Spanish 4/10, French 2/10, German 1/10.",ton:"humoristique",viral_score:"7"},
-  ]};
-  const idees = country==="FR" ? IDEES_FR : IDEES_US;
+  // API helper — calls /api/generate serverless function
+  const callAPI = async (prompt, max_tokens=1500) => {
+    const r = await fetch("/api/generate", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({ prompt, max_tokens }),
+    });
+    const d = await r.json();
+    if (!d.ok) throw new Error(d.error || "API error");
+    const clean = d.text.replace(/```json\s*/g,"").replace(/```\s*/g,"").trim();
+    return JSON.parse(clean);
+  };
+
+  // Idées de contenu — generated via API
+  const[idees,setIdees]=useState(null);
+  const[ideesLoading,setIdeesLoading]=useState(false);
+  const generateIdees=async()=>{
+    setIdeesLoading(true);
+    try{
+      const prompt=`Tu es un EXPERT en contenu viral TikTok dans la niche "language learning". Emma est une app d'apprentissage de langues avec un avatar 3D conversationnel.
+
+Marché : ${country==="FR"?"FRANCE (contenu en français)":"USA (contenu en anglais)"}
+
+EXEMPLES VIRAUX RÉELS :
+- "why is french so hard 💔🇫🇷" → fille en larmes, autodérision
+- "practicing french with my ai dad 😭💔" → framing absurde
+- "je vais enfin pouvoir draguer la femme de mes rêves grâce à emma" → app = solution au vrai problème
+
+DYNAMIQUE CRÉATEUR ↔ EMMA : Emma est un POTE, pas un prof. Duo comique. Le comique vient de la SITUATION, pas de blagues.
+${country==="FR"?"HUMOUR FR : autodérision, second degré, situations quotidien, Emma sèche et cash.":"HUMOUR US : self-deprecating, hyperbole émotionnelle, Emma brutally honest."}
+
+RÈGLES : Émotion d'abord. Personne réelle face caméra. PAS de son trending (audio natif). Situations comiques pas des blagues. Idée en 1-2 phrases. Pour emma_fait : la situation comique concrète.
+
+Génère 6 idées de contenu UGC. Mélange : 2 humoristiques, 1 relatable, 1 absurde, 1 dramatique, 1 drague/séduction.
+
+Réponds UNIQUEMENT en JSON valide, sans markdown ni backticks :
+{"idees":[{"titre":"hook max 8 mots","text_overlay":"texte sur la vidéo","idee":"1-2 phrases","emma_fait":"situation comique 1-2 phrases","ton":"humoristique|relatable|absurde|dramatique|sentimental","viral_score":"1-10"}]}`;
+      const parsed = await callAPI(prompt);
+      setIdees(parsed);
+    }catch(e){console.error(e);}
+    setIdeesLoading(false);
+  };
 
   if(loading) return (<div style={{padding:40,textAlign:"center",color:"#9ca3af"}}>Chargement...</div>);
 
@@ -290,9 +314,12 @@ export default function EmmaRadar(){
       {tab==="idees"&&<>
         <div style={{background:"#fff",border:"1px solid #e5e7eb",borderRadius:14,padding:20,marginBottom:16}}>
           <div style={{fontSize:14,fontWeight:800,marginBottom:4}}>🎬 Idées de contenu UGC pour Emma</div>
-          <p style={{fontSize:12,color:"#6b7280",margin:0,lineHeight:1.5}}>
+          <p style={{fontSize:12,color:"#6b7280",margin:"0 0 12px",lineHeight:1.5}}>
             Des concepts de vidéos sans son trending — 100% audio natif, basés sur la dynamique créateur × Emma.
           </p>
+          <button onClick={generateIdees} disabled={ideesLoading} style={{background:"#111",color:"#fff",border:"none",padding:"10px 20px",borderRadius:10,fontSize:13,fontWeight:700,cursor:ideesLoading?"wait":"pointer",opacity:ideesLoading?0.7:1}}>
+            {ideesLoading?"⏳ Génération en cours...":"💡 Générer 6 idées "+(country==="FR"?"🇫🇷":"🇺🇸")}
+          </button>
         </div>
 
         {idees?.idees?.map((idea,i)=>(
