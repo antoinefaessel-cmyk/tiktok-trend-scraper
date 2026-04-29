@@ -1,5 +1,45 @@
 {
   "FR": [],
-  "US": [],
-  "lastUpdated": "2026-04-28T16:13:37.101Z"
+  "US": [
+    {
+      "rank": 1,
+      "title": "existing",
+      "artist": "your warm arms",
+      "change": "1",
+      "approved": true,
+      "path": "existing-7605990042641418241",
+      "cat": "popular",
+      "trend": [],
+      "topCountries": [],
+      "topInterests": [],
+      "ages": null
+    },
+    {
+      "rank": 2,
+      "title": "Letter To My 13 Year Old Self - Instrumental",
+      "artist": "Mei Mei The Bunny",
+      "change": "1",
+      "approved": false,
+      "path": "Letter-To-My-13-Year-Old-Self-Instrumental-7375152004395894800",
+      "cat": "popular",
+      "trend": [],
+      "topCountries": [],
+      "topInterests": [],
+      "ages": null
+    },
+    {
+      "rank": 3,
+      "title": "Lazy",
+      "artist": "PonPieHi",
+      "change": "1",
+      "approved": false,
+      "path": "Lazy-7508810345118500865",
+      "cat": "popular",
+      "trend": [],
+      "topCountries": [],
+      "topInterests": [],
+      "ages": null
+    }
+  ],
+  "lastUpdated": "2026-04-29T13:11:15.803Z"
 }
