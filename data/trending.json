@@ -1,5 +1,45 @@
 {
-  "FR": [],
+  "FR": [
+    {
+      "rank": 1,
+      "title": "Map Day - Tomodachi Life Frutiger Aero Bitcrushed Old Speaker Lofi Mix",
+      "artist": "Nostalgiacore",
+      "change": "2",
+      "approved": false,
+      "path": "Map-Day-Tomodachi-Life-Frutiger-Aero-Bitcrushed-Old-Speaker-Lofi-Mix-7564108831032068097",
+      "cat": "popular",
+      "trend": [],
+      "topCountries": [],
+      "topInterests": [],
+      "ages": null
+    },
+    {
+      "rank": 2,
+      "title": "Beat It",
+      "artist": "Michael Jackson",
+      "change": "3",
+      "approved": false,
+      "path": "Beat-It-6696417475073935361",
+      "cat": "popular",
+      "trend": [],
+      "topCountries": [],
+      "topInterests": [],
+      "ages": null
+    },
+    {
+      "rank": 3,
+      "title": "Dancing In The Dark (From The Home Soundtrack)",
+      "artist": "Jacob Plant",
+      "change": "3",
+      "approved": false,
+      "path": "Dancing-In-The-Dark-From-The-Home-Soundtrack-6790799561221769217",
+      "cat": "popular",
+      "trend": [],
+      "topCountries": [],
+      "topInterests": [],
+      "ages": null
+    }
+  ],
   "US": [],
-  "lastUpdated": "2026-05-05T11:52:38.063Z"
+  "lastUpdated": "2026-05-06T15:54:35.017Z"
 }
