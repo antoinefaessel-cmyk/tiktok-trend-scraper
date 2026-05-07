@@ -2,11 +2,11 @@
   "FR": [
     {
       "rank": 1,
-      "title": "Map Day - Tomodachi Life Frutiger Aero Bitcrushed Old Speaker Lofi Mix",
-      "artist": "Nostalgiacore",
-      "change": "2",
+      "title": "Fiesta Mexicana",
+      "artist": "Musica Mexicana",
+      "change": "1",
       "approved": false,
-      "path": "Map-Day-Tomodachi-Life-Frutiger-Aero-Bitcrushed-Old-Speaker-Lofi-Mix-7564108831032068097",
+      "path": "Fiesta-Mexicana-6715976683607820289",
       "cat": "popular",
       "trend": [],
       "topCountries": [],
@@ -15,11 +15,11 @@
     },
     {
       "rank": 2,
-      "title": "Beat It",
-      "artist": "Michael Jackson",
-      "change": "3",
+      "title": "El Cinco de Mayo (Mariachi)",
+      "artist": "David Peña",
+      "change": "77",
       "approved": false,
-      "path": "Beat-It-6696417475073935361",
+      "path": "El-Cinco-de-Mayo-Mariachi-6863434683519076353",
       "cat": "popular",
       "trend": [],
       "topCountries": [],
@@ -28,11 +28,11 @@
     },
     {
       "rank": 3,
-      "title": "Dancing In The Dark (From The Home Soundtrack)",
-      "artist": "Jacob Plant",
+      "title": "Take My Space",
+      "artist": "nimino",
       "change": "3",
-      "approved": false,
-      "path": "Dancing-In-The-Dark-From-The-Home-Soundtrack-6790799561221769217",
+      "approved": true,
+      "path": "Take-My-Space-7628189877679327249",
       "cat": "popular",
       "trend": [],
       "topCountries": [],
@@ -41,5 +41,5 @@
     }
   ],
   "US": [],
-  "lastUpdated": "2026-05-06T15:54:35.017Z"
+  "lastUpdated": "2026-05-07T15:56:26.517Z"
 }
