@@ -1,5 +1,6 @@
 {
-  "FR": [
+  "FR": [],
+  "US": [
     {
       "rank": 1,
       "title": "Fiesta Mexicana",
@@ -40,6 +41,5 @@
       "ages": null
     }
   ],
-  "US": [],
-  "lastUpdated": "2026-05-07T15:56:26.517Z"
+  "lastUpdated": "2026-05-08T12:16:55.005Z"
 }
