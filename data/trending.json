@@ -1,45 +1,5 @@
 {
   "FR": [],
-  "US": [
-    {
-      "rank": 1,
-      "title": "Fiesta Mexicana",
-      "artist": "Musica Mexicana",
-      "change": "1",
-      "approved": false,
-      "path": "Fiesta-Mexicana-6715976683607820289",
-      "cat": "popular",
-      "trend": [],
-      "topCountries": [],
-      "topInterests": [],
-      "ages": null
-    },
-    {
-      "rank": 2,
-      "title": "El Cinco de Mayo (Mariachi)",
-      "artist": "David Peña",
-      "change": "77",
-      "approved": false,
-      "path": "El-Cinco-de-Mayo-Mariachi-6863434683519076353",
-      "cat": "popular",
-      "trend": [],
-      "topCountries": [],
-      "topInterests": [],
-      "ages": null
-    },
-    {
-      "rank": 3,
-      "title": "Take My Space",
-      "artist": "nimino",
-      "change": "3",
-      "approved": true,
-      "path": "Take-My-Space-7628189877679327249",
-      "cat": "popular",
-      "trend": [],
-      "topCountries": [],
-      "topInterests": [],
-      "ages": null
-    }
-  ],
-  "lastUpdated": "2026-05-19T11:15:59.851Z"
+  "US": [],
+  "lastUpdated": "2026-05-20T10:48:40.328Z"
 }
